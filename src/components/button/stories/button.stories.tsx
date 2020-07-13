@@ -3,4 +3,4 @@ import { Button } from '../';
 
 export default { title: 'Button' };
 
-export const plainOne = () => <Button backgroundColor="black">Hello</Button>
+export const plainOne = () => <Button bg="black" color="white" >Hello</Button>
