@@ -1,0 +1,34 @@
+{
+  "name": "funk",
+  "version": "1.0.0",
+  "description": "A React Component Library",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -r lib",
+    "build": "npm run clean && tsc",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "author": "Rohan Krishnaswamy",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-decorators": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.19",
+    "@types/styled-components": "^5.1.1",
+    "babel-loader": "^8.1.0",
+    "typescript": "^3.9.6"
+  }
+}
