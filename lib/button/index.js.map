@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../src/components/button/index.ts"],"names":[],"mappings":";;;;AACA,OAAO,MAAM,MAAM,mBAAmB,CAAC;AAEvC,MAAM,CAAC,IAAM,MAAM,GAAG,MAAM,CAAC,MAAM,yLAAK,kDAG7B,EAA2C,mBACtC,EAAyC,6CAGxD,KAJU,UAAA,KAAK,IAAI,OAAA,KAAK,CAAC,SAAS,IAAI,eAAe,EAAlC,CAAkC,EACtC,UAAA,KAAK,IAAI,OAAA,KAAK,CAAC,eAAe,IAAI,OAAO,EAAhC,CAAgC,CAGxD,CAAC"}
