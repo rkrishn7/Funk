@@ -9,13 +9,12 @@ jobs:
       uses: actions/checkout@master
     - name: Setup node
       uses: actions/setup-node@v1
-      node-version: 12
     - name: Install dependencies
       run: yarn install --frozen-lockfile
     - name: Build
       run: yarn build
     - name: Release
       env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       run: npm run semantic-release
