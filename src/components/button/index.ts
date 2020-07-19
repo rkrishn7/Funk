@@ -21,5 +21,5 @@ export const Button = styled.button<ButtonProps>`
   padding: 0.5em;
   margin: 0.5em;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
 `;
