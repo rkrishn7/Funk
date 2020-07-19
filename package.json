@@ -2,10 +2,16 @@
   "name": "funk",
   "version": "1.0.0",
   "description": "A React Component Library",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "publishConfig": { 
+    "access": "public", 
+    "branches": ["master"] 
+  },
   "scripts": {
-    "clean": "rm -r lib",
-    "build": "npm run clean && tsc",
+    "clean": "rm -r lib/*",
+    "build": "npm run build:types && npm run build:js",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -22,8 +28,11 @@
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
     "@babel/plugin-proposal-decorators": "^7.10.4",
+    "@babel/plugin-proposal-export-default-from": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.8.3",
     "@storybook/addon-actions": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
