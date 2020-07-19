@@ -1,5 +1,5 @@
 {
-  "name": "funk",
+  "name": "react-funk",
   "version": "1.0.0",
   "description": "A React Component Library",
   "main": "lib/index.js",
@@ -13,6 +13,10 @@
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkrishn7/Funk.git"
   },
   "author": "Rohan Krishnaswamy",
   "license": "ISC",
