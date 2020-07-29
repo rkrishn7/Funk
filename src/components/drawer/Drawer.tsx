@@ -1,34 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
-import { 
+import {
   color,
   space,
   layout,
   background,
+  backgroundColor,
   border,
-  ColorProps,
+  BackgroundColorProps,
   SpaceProps,
   LayoutProps,
   BackgroundProps,
   BorderProps,
 } from 'styled-system';
+import { Transition } from 'react-transition-group';
+import { slideRight } from '@src/lib/styles/transitions';
 
 type Dock = "left" | "right";
 
-interface DrawerProps
+interface ContainerProps
   extends
-  ColorProps,
   SpaceProps,
   LayoutProps,
   BackgroundProps,
-  BorderProps 
+  BorderProps,
+  BackgroundColorProps
 {
   dock: Dock;
-  visible?: boolean;
-  closed?: boolean;
+  width?: number;
+  style?: any;
 };
 
-export const Drawer = styled.div<DrawerProps>`
+interface DrawerProps extends ContainerProps {
+  open: boolean;
+};
+
+const Container = styled.div<ContainerProps>`
+  ${backgroundColor}
   ${color}
   ${layout}
   ${space}
@@ -37,4 +45,38 @@ export const Drawer = styled.div<DrawerProps>`
   position: absolute;
   ${p => p.dock === "left" ? 'left: 0' : 'right: 0'};
   height: 100vh;
+  transition: all 300ms linear;
+  width: ${p => p.width}px;
 `;
+
+export const Drawer: React.FC<DrawerProps> = ({ dock, open, children, width, style, ...props }) => {
+  const TransitionStyles = slideRight({ elemWidth: width! });
+
+  return (
+    <Transition in={open} timeout={100} unmountOnExit>
+      {state => (
+        <Container 
+          dock={dock} 
+          color="black" 
+          bg="white"
+          width={width}
+          borderRightColor="black"
+          borderRightWidth={3}
+          borderRightStyle="solid"
+          borderBottomRightRadius={5}
+          borderTopRightRadius={5}
+          style={{ ...TransitionStyles[state], ...style }}
+          {...props}>
+          {children}
+        </Container>
+      )}
+    </Transition>
+  )
+};
+
+Drawer.defaultProps = {
+  width: 250,
+} as Partial<DrawerProps>;
+
+
+

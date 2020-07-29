@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "A React Component Library",
   "main": "lib/index.js",
-  "release": { 
-    "branches": ["master"] 
+  "release": {
+    "branches": [
+      "master"
+    ]
   },
   "scripts": {
     "clean": "rm -r lib/*",
@@ -21,18 +23,20 @@
   "author": "Rohan Krishnaswamy",
   "license": "ISC",
   "dependencies": {
+    "@types/react-transition-group": "^4.4.0",
     "@types/styled-system": "^5.1.9",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.10.4",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.8.3",
