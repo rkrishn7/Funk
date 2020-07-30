@@ -23,8 +23,10 @@
   "author": "Rohan Krishnaswamy",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.158",
     "@types/react-transition-group": "^4.4.0",
     "@types/styled-system": "^5.1.9",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.4.1",
@@ -47,6 +49,7 @@
     "@storybook/react": "^5.3.19",
     "@types/styled-components": "^5.1.1",
     "babel-loader": "^8.1.0",
+    "eslint": "^7.5.0",
     "typescript": "^3.9.6"
   }
 }

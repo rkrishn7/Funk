@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Drawer } from '../';
-import { Button } from '../../button';
+import { Drawer } from '@src/components/drawer';
+import { Button } from '@src/components/button';
 
 export default { title: 'Drawer' };
 

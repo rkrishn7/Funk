@@ -8,6 +8,7 @@ import {
   SpaceProps, 
   LayoutProps 
 } from 'styled-system';
+import { themeGet } from '@src/lib/utils';
 
 interface ButtonProps
   extends ColorProps,
@@ -15,6 +16,7 @@ interface ButtonProps
   LayoutProps {};
 
 export const Button = styled.button<ButtonProps>`
+  background-color: ${themeGet('colors.lightBlue')};
   ${color}
   ${layout}
   ${space}

@@ -13,8 +13,8 @@ import {
   BackgroundProps,
   BorderProps,
 } from 'styled-system';
-import { Transition } from 'react-transition-group';
-import { slideRight } from '@src/lib/styles/transitions';
+import { Slide } from '@src/components/transitions/Slide';
+import { themeGet } from '@src/lib/utils';
 
 type Dock = "left" | "right";
 
@@ -36,6 +36,9 @@ interface DrawerProps extends ContainerProps {
 };
 
 const Container = styled.div<ContainerProps>`
+  box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.5);
+  background-color: ${themeGet('colors.lightCoral')};
+  border-right: 1px solid ${themeGet('colors.lightCoral')};
   ${backgroundColor}
   ${color}
   ${layout}
@@ -45,32 +48,20 @@ const Container = styled.div<ContainerProps>`
   position: absolute;
   ${p => p.dock === "left" ? 'left: 0' : 'right: 0'};
   height: 100vh;
-  transition: all 300ms linear;
   width: ${p => p.width}px;
 `;
 
-export const Drawer: React.FC<DrawerProps> = ({ dock, open, children, width, style, ...props }) => {
-  const TransitionStyles = slideRight({ elemWidth: width! });
-
+export const Drawer: React.FC<DrawerProps> = ({ dock, open, children, width, ...props }) => {
   return (
-    <Transition in={open} timeout={100} unmountOnExit>
-      {state => (
-        <Container 
-          dock={dock} 
-          color="black" 
-          bg="white"
-          width={width}
-          borderRightColor="black"
-          borderRightWidth={3}
-          borderRightStyle="solid"
-          borderBottomRightRadius={5}
-          borderTopRightRadius={5}
-          style={{ ...TransitionStyles[state], ...style }}
-          {...props}>
-          {children}
-        </Container>
-      )}
-    </Transition>
+    <Slide in="up" out="up" show={open} duration={300}>
+      <Container 
+        dock={dock} 
+        color="black"
+        width={width}
+        {...props}>
+        {children}
+      </Container>
+    </Slide>
   )
 };
 
