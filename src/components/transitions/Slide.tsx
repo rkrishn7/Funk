@@ -7,7 +7,7 @@ const DEFAULT_ANIMATION_DURATION = 300;
 const SLIDE_IN_STYLES: Record<Direction, TransitionStyle<React.CSSProperties>> = {
   up: {
     entered: {
-      transform: 'translateY(0vh)',    
+      transform: 'translateY(0vh)',     
     },
     entering: {
       transform: 'translateY(100vh)',
