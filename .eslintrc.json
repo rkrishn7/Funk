@@ -13,29 +13,27 @@
   "plugins": ["react-hooks", "@typescript-eslint"],
   "rules": {
     "class-methods-use-this": 0,
-    "curly": [2, "multi-line"],
     "import/no-cycle": "error",
     "import/no-unresolved": "off",
     "import/no-extraneous-dependencies": 0,
     "import/prefer-default-export": 0,
+    "default-case": "off",
     "import/extensions": 0,
+    "no-unused-vars": "off",
     "no-confusing-arrow": 0,
     "no-continue": 0,
     "no-duplicate-imports": 0,
     "no-else-return": 0,
     "no-prototype-builtins": 0,
     "no-underscore-dangle": 0,
-    "no-unused-vars": [
-      "error",
-      { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_", "ignoreRestSiblings": true }
-    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/button-has-type": 0,
-    "react/jsx-props-no-spreading": 1,
+    "react/jsx-props-no-spreading": 0,
     "react/destructuring-assignment": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-filename-extension": 0,
+    "react/jsx-curly-newline": 0,
     "react/no-multi-comp": 0,
     "react/prefer-stateless-function": 0,
     "react/prop-types": 0,
@@ -47,5 +45,5 @@
     "no-bitwise": 0,
     "no-plusplus": 0,
     "no-multi-assign": 0
-  },
+  }
 }

@@ -20,7 +20,7 @@ const SLIDE_IN_STYLES: Record<Direction, TransitionStyle<React.CSSProperties>> =
     },
     unmounted: {
       transform: 'translateY(100vh)',
-    }
+    },
   },
   down: {
     entered: {
@@ -71,24 +71,25 @@ const SLIDE_IN_STYLES: Record<Direction, TransitionStyle<React.CSSProperties>> =
     },
     unmounted: {
       transform: 'translateX(-100vw)',
-    }
+    },
   },
 };
 
+// eslint-disable-next-line consistent-return
 const invertDirection = (direction: Direction) => {
-  switch(direction) {
-    case "right":
-      return "left";
-    case "left":
-      return "right";
-    case "down":
-      return "up";
-    case "up":
-      return "down";
+  switch (direction) {
+    case 'right':
+      return 'left';
+    case 'left':
+      return 'right';
+    case 'down':
+      return 'up';
+    case 'up':
+      return 'down';
   }
-}
+};
 
-type Direction = "left" | "right" | "up" | "down";
+type Direction = 'left' | 'right' | 'up' | 'down';
 
 interface SlideProps {
   children: React.ReactNode;
@@ -96,15 +97,16 @@ interface SlideProps {
   in: Direction;
   out: Direction;
   duration?: number;
-};
+}
 
 export const Slide: React.FC<SlideProps> = ({
-  duration = DEFAULT_ANIMATION_DURATION, 
+  duration = DEFAULT_ANIMATION_DURATION,
   children,
   show,
   in: directionIn,
   out: directionOut,
 }) => {
+  // eslint-disable-next-line no-param-reassign
   directionOut = invertDirection(directionOut);
 
   const styles = {
@@ -116,27 +118,27 @@ export const Slide: React.FC<SlideProps> = ({
   };
 
   return (
-    <Transition 
-      in={show} 
+    <Transition
+      in={show}
       timeout={{
         enter: 0,
         exit: duration,
       }}
       appear
-      unmountOnExit>
-      {state => (
-        React.Children.map(children, child => 
+      unmountOnExit
+    >
+      {state =>
+        React.Children.map(children, child =>
           React.cloneElement(child as React.ReactElement<any>, {
             style: {
               ...styles[state],
-              ...{ 
+              ...{
                 transition: `all ${duration}ms ease-in-out`,
               },
-            }
+            },
           })
         )
-      )}
+      }
     </Transition>
   );
-}
-
+};

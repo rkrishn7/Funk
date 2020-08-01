@@ -14,8 +14,8 @@
     }
   },
   "lint-staged": {
-    "src/**/*.{ts,tsx,js,jsx}": [
-      "eslint --fix",
+    "**/*": [
+      "eslint --ext .ts,.tsx --fix src/**/*",
       "prettier --write"
     ]
   },
@@ -24,6 +24,7 @@
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "lint": "eslint --ext .ts,.tsx --fix src/**/*",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

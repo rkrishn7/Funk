@@ -1,5 +1,5 @@
 import React from 'react';
-import { Boobee } from '../';
+import { Boobee } from '..';
 
 export default { title: 'Input' };
 
