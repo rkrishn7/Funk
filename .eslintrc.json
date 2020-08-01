@@ -1,5 +1,14 @@
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true,
+      "legacyDecorators": true
+    }
+  },
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["react-hooks", "@typescript-eslint"],
   "rules": {
@@ -39,13 +48,4 @@
     "no-plusplus": 0,
     "no-multi-assign": 0
   },
-  "parserOptions": {
-    "ecmaVersion": 8,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "impliedStrict": true,
-      "jsx": true,
-      "legacyDecorators": true
-    }
-  }
 }
