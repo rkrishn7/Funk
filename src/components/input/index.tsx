@@ -25,7 +25,7 @@ const View = styled.div<InputProps>`
   border-radius: 3px;
 `;
 
-export const Boobee: React.FC<any> = (props) => {
+export const Boobee: React.FC<any> = props => {
     return (
         <View {...props}>
             <Button>

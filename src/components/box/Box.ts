@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { 
+import {
   color,
   space,
   layout,
@@ -15,13 +15,12 @@ import {
 } from 'styled-system';
 
 interface BoxProps
-  extends
-  ColorProps,
-  SpaceProps,
-  LayoutProps,
-  FlexboxProps,
-  BackgroundProps,
-  BorderProps {};
+  extends ColorProps,
+    SpaceProps,
+    LayoutProps,
+    FlexboxProps,
+    BackgroundProps,
+    BorderProps {}
 
 export const Box = styled.div<BoxProps>`
   ${color}

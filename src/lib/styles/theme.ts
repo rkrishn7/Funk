@@ -3,5 +3,5 @@ export const defaultTheme = {
     white: '#FFFFFF',
     lightCoral: '#F08080',
     lightBlue: '#AFDBD2',
-  }
+  },
 };
