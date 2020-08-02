@@ -3,14 +3,28 @@
   "version": "1.0.0",
   "description": "A React Component Library",
   "main": "lib/index.js",
-  "release": { 
-    "branches": ["master"] 
+  "release": {
+    "branches": [
+      "master"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "scripts": {
     "clean": "rm -r lib/*",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "lint": "eslint --ext .ts,.tsx --fix src/**/*",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -21,18 +35,25 @@
   "author": "Rohan Krishnaswamy",
   "license": "ISC",
   "dependencies": {
+    "@types/lodash": "^4.14.158",
+    "@types/react-transition-group": "^4.4.0",
     "@types/styled-system": "^5.1.9",
+    "framer": "^1.2.5",
+    "framer-motion": "^2.3.0",
+    "husky": ">=4",
+    "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.4",
     "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-proposal-decorators": "^7.10.4",
     "@babel/plugin-proposal-export-default-from": "^7.10.4",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.10.4",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.8.3",
@@ -42,7 +63,20 @@
     "@storybook/preset-typescript": "^3.0.0",
     "@storybook/react": "^5.3.19",
     "@types/styled-components": "^5.1.1",
+    "@typescript-eslint/eslint-plugin": "^3.7.1",
+    "@typescript-eslint/parser": "^3.7.1",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
-    "typescript": "^3.9.6"
+    "eslint": "7.2.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "lint-staged": ">=10",
+    "prettier": "2.0.5",
+    "typescript": "^3.9.7"
   }
 }
