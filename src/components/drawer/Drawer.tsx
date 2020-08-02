@@ -5,7 +5,6 @@ import {
   space,
   layout,
   background,
-  backgroundColor,
   border,
   BackgroundColorProps,
   SpaceProps,
@@ -40,7 +39,6 @@ const Container = styled(motion.div)<ContainerProps>`
   box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.5);
   background-color: ${themeGet('colors.lightCoral')};
   border-right: 1px solid ${themeGet('colors.lightCoral')};
-  ${backgroundColor}
   ${color}
   ${layout}
   ${space}
