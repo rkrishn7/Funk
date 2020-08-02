@@ -4,7 +4,7 @@ import { Button } from '@src/components/button';
 
 export default { title: 'Drawer' };
 
-export const LeftDocked: React.FC<any> = () => {
+export const LeftDocked: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -14,6 +14,19 @@ export const LeftDocked: React.FC<any> = () => {
         style={{ position: 'absolute', bottom: 10, right: 10 }}
         onClick={() => setOpen(!open)}
       >
+        open/close
+      </Button>
+    </div>
+  );
+};
+
+export const RightDocked: React.FC = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <Drawer open={open} dock="right" />
+      <Button style={{ position: 'absolute', bottom: 10, left: 10 }} onClick={() => setOpen(!open)}>
         open/close
       </Button>
     </div>

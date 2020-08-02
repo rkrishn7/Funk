@@ -38,6 +38,8 @@
     "@types/lodash": "^4.14.158",
     "@types/react-transition-group": "^4.4.0",
     "@types/styled-system": "^5.1.9",
+    "framer": "^1.2.5",
+    "framer-motion": "^2.3.0",
     "husky": ">=4",
     "lodash": "^4.17.19",
     "react": "^16.13.1",

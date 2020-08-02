@@ -3,7 +3,7 @@ import {
   color,
   space,
   layout,
-  flex,
+  flexbox,
   background,
   border,
   ColorProps,
@@ -13,20 +13,31 @@ import {
   BackgroundProps,
   BorderProps,
 } from 'styled-system';
+import { motion, AnimationProps } from 'framer-motion';
 
-interface BoxProps
+export interface BoxProps
   extends ColorProps,
     SpaceProps,
     LayoutProps,
     FlexboxProps,
     BackgroundProps,
-    BorderProps {}
+    BorderProps,
+    AnimationProps {
+  color?:
+    | string
+    | (string & (string | number | symbol | null)[])
+    | (string & {
+        [x: string]: string | number | symbol | undefined;
+        [x: number]: string | number | symbol | undefined;
+      })
+    | undefined; // Typing issue
+}
 
-export const Box = styled.div<BoxProps>`
+export const Box = styled(motion.div)<BoxProps>`
   ${color}
   ${layout}
   ${space}
-  ${flex}
+  ${flexbox}
   ${background}
   ${border}
   display: flex;
