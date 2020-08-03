@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimationProps, Variants } from 'framer-motion';
-import { Box } from '@src/components/box';
+import { Box, Text, TextProps } from '@src/index';
 import styled from 'styled-components';
 
 const container = {
@@ -41,11 +41,10 @@ interface BannerProps extends AnimationProps {
   title: string;
   letterStyle?: React.CSSProperties;
   children?: never;
-  itemProps?: AnimationProps;
+  itemProps?: TextProps;
 }
 
-const BannerItem = styled(motion.h1)<AnimationProps>`
-  padding: 10px;
+const BannerItem = styled(Text)`
   cursor: pointer;
 `;
 
@@ -54,7 +53,7 @@ export const Banner: React.FC<BannerProps> = ({ title, letterStyle, itemProps, .
     <Box flexDirection="row" variants={container} initial="hidden" animate="show" {...props}>
       {title.split('').map(c => {
         return (
-          <BannerItem style={letterStyle} variants={item} whileHover="hover" {...itemProps}>
+          <BannerItem fontSize={[30, 50, 70]} variants={item} whileHover="hover" {...itemProps}>
             {c}
           </BannerItem>
         );

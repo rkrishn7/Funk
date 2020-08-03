@@ -28,7 +28,11 @@ export const StrobeBackground = () => (
   >
     <Banner
       title="react funk"
-      letterStyle={{ fontFamily: 'Comfortaa', fontSize: '80px', padding: '30px', color: 'white' }}
+      itemProps={{
+        fontFamily: 'Comfortaa',
+        padding: [10, 20, 30],
+        color: 'white',
+      }}
     />
   </Strobe>
 );

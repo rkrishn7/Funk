@@ -12,7 +12,7 @@ import {
   BackgroundProps,
   BorderProps,
 } from 'styled-system';
-import { themeGet } from '@src/lib/utils';
+import { themeGet } from '@src/lib/styles';
 import { motion, AnimatePresence, AnimationProps, Variants } from 'framer-motion';
 
 type Dock = 'left' | 'right';
