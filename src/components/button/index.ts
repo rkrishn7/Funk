@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { color, space, layout, ColorProps, SpaceProps, LayoutProps } from 'styled-system';
-import { themeGet } from '@src/lib/styles';
+import { themeGet } from '../../lib/styles';
 
 interface ButtonProps extends ColorProps, SpaceProps, LayoutProps {}
 

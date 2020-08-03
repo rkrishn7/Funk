@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion, AnimationProps, Variants } from 'framer-motion';
-import { Box, Text, TextProps } from '@src/index';
+import { AnimationProps, Variants } from 'framer-motion';
 import styled from 'styled-components';
+import { Box } from '../box';
+import { Text, TextProps } from '../text';
 
 const container = {
   hidden: { opacity: 0 },

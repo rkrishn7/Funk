@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, BoxProps } from '@src/components/box';
+import { Box, BoxProps } from '../box';
 
 interface StrobeProps {
   colors: string[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Transition } from 'react-transition-group';
-import { Transition as TransitionStyle } from '@src/lib/types';
+import { Transition as TransitionStyle } from '../../lib/types';
 
 const DEFAULT_ANIMATION_DURATION = 300;
 

@@ -12,8 +12,8 @@ import {
   BackgroundProps,
   BorderProps,
 } from 'styled-system';
-import { themeGet } from '@src/lib/styles';
 import { motion, AnimatePresence, AnimationProps, Variants } from 'framer-motion';
+import { themeGet } from '../../lib/styles';
 
 type Dock = 'left' | 'right';
 
