@@ -34,11 +34,11 @@ export interface BoxProps
 }
 
 export const Box = styled(motion.div)<BoxProps>`
+  display: flex;
   ${color}
   ${layout}
   ${space}
   ${flexbox}
   ${background}
   ${border}
-  display: flex;
 `;
