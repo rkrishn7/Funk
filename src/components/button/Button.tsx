@@ -33,6 +33,7 @@ export interface ButtonProps
     AnimationProps {
   color?: string;
   scale?: number;
+  hoverColor?: string;
   activeColor?: string;
 }
 
@@ -58,12 +59,19 @@ const Container = styled(motion.button)<ButtonProps>`
   ${flexbox}
 `;
 
-export const Button: React.FC<ButtonProps> = ({ children, activeColor, scale, ...props }) => (
+export const Button: React.FC<ButtonProps> = ({
+  children,
+  activeColor,
+  scale,
+  hoverColor,
+  ...props
+}) => (
   <Container
     display="flex"
     alignItems="center"
     justifyContent="center"
     whileTap={{ scale: scale || 0.8, backgroundColor: activeColor }}
+    whileHover={{ backgroundColor: hoverColor }}
     {...props}
   >
     {children}

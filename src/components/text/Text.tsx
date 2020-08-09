@@ -1,13 +1,19 @@
 import React from 'react';
-import { motion, AnimationProps } from 'framer-motion';
+import { motion, AnimationProps, HoverHandlers } from 'framer-motion';
 import { typography, color, space, SpaceProps, TypographyProps, ColorProps } from 'styled-system';
 import styled from 'styled-components';
 import { Icon, IconProps } from '../icon';
 import { Box, BoxProps } from '../box';
+import { themeGet } from '../../lib/styles/theme';
 
 type IconPosition = 'left' | 'right' | 'bottom' | 'top';
 
-export interface TextProps extends TypographyProps, SpaceProps, ColorProps, AnimationProps {
+export interface TextProps
+  extends TypographyProps,
+    SpaceProps,
+    ColorProps,
+    AnimationProps,
+    HoverHandlers {
   color?:
     | string
     | (string & (string | number | symbol | null)[])
@@ -24,6 +30,7 @@ export interface TextProps extends TypographyProps, SpaceProps, ColorProps, Anim
 }
 
 export const TextContainer = styled(motion.p)<TextProps>`
+  font-family: ${themeGet('fontFamily')};
   ${typography}
   ${space}
   ${color}
