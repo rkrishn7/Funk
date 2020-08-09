@@ -2,6 +2,8 @@ import React from 'react';
 import { Banner } from '@src/components/banner';
 import { Box } from '@src/components/box';
 import { Strobe } from '@src/components/strobe';
+import { defaultTheme as theme } from '@src/lib/styles/theme';
+import { values, omit } from 'lodash';
 import './styles.css';
 
 export default { title: 'Banner' };
@@ -21,10 +23,10 @@ export const StrobeBackground = () => (
     justifyContent="center"
     width="100vw"
     height="100vh"
-    background="#0CF"
+    background={theme.colors.purple}
     opacity={0.5}
-    colors={['#F05', '#85F', '#0CF']}
-    duration={2}
+    colors={values(omit(theme.colors, 'white'))}
+    duration={1}
   >
     <Banner
       title="react funk"

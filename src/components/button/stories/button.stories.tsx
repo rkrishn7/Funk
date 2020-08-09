@@ -1,14 +1,15 @@
 import React from 'react';
-import { Slide } from '@src/components/transitions/Slide';
 import { Button } from '@src/components/button';
+import { defaultTheme as theme } from '@src/lib/styles/theme';
 
 export default { title: 'Button' };
 
 export const plainOne = () => (
-  <Slide in="left" out="right" show duration={500}>
-    <Button bg="black" color="white" style={{ position: 'absolute', left: 0 }}>
-      Hello
-    </Button>
-    <Button color="white">Hello</Button>
-  </Slide>
+  <Button
+    bg={theme.palette.primary}
+    activeColor={theme.palette.muted}
+    style={{ position: 'absolute', left: 30 }}
+  >
+    Hello
+  </Button>
 );

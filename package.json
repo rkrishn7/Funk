@@ -20,8 +20,8 @@
     ]
   },
   "scripts": {
-    "clean": "rm -r lib/*",
-    "build": "npm run build:types && npm run build:js",
+    "clean": "rm -r lib",
+    "build": "npm run clean && npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
     "lint": "eslint --ext .ts,.tsx --fix src/**/*",
@@ -44,6 +44,7 @@
     "lodash": "^4.17.19",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-portal": "^4.2.1",
     "react-transition-group": "^4.4.1",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"
@@ -76,6 +77,9 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "4.0.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "lint-staged": ">=10",
     "prettier": "2.0.5",
     "typescript": "^3.9.7"

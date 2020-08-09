@@ -6,12 +6,14 @@ import {
   flexbox,
   background,
   border,
+  position,
   ColorProps,
   SpaceProps,
   LayoutProps,
   FlexboxProps,
   BackgroundProps,
   BorderProps,
+  PositionProps,
 } from 'styled-system';
 import { motion, AnimationProps } from 'framer-motion';
 
@@ -22,6 +24,7 @@ export interface BoxProps
     FlexboxProps,
     BackgroundProps,
     BorderProps,
+    PositionProps,
     AnimationProps {
   color?:
     | string
@@ -41,4 +44,5 @@ export const Box = styled(motion.div)<BoxProps>`
   ${flexbox}
   ${background}
   ${border}
+  ${position}
 `;

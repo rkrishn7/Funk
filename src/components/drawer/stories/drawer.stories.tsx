@@ -9,12 +9,12 @@ export const LeftDocked: React.FC = () => {
 
   return (
     <div>
-      <Drawer open={open} dock="left" />
+      <Drawer open={open} dock="left" height="100vh" handleClose={() => setOpen(!open)} />
       <Button
         style={{ position: 'absolute', bottom: 10, right: 10 }}
         onClick={() => setOpen(!open)}
       >
-        open/close
+        open
       </Button>
     </div>
   );
@@ -25,9 +25,9 @@ export const RightDocked: React.FC = () => {
 
   return (
     <div>
-      <Drawer open={open} dock="right" />
+      <Drawer open={open} dock="right" handleClose={() => setOpen(!open)} />
       <Button style={{ position: 'absolute', bottom: 10, left: 10 }} onClick={() => setOpen(!open)}>
-        open/close
+        open
       </Button>
     </div>
   );

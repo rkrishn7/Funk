@@ -1,115 +1,123 @@
 import React from 'react';
-import styled from 'styled-components';
-import {
-  color,
-  space,
-  layout,
-  background,
-  border,
-  BackgroundColorProps,
-  SpaceProps,
-  LayoutProps,
-  BackgroundProps,
-  BorderProps,
-} from 'styled-system';
-import { motion, AnimatePresence, AnimationProps, Variants } from 'framer-motion';
+import styled, { css } from 'styled-components';
+import { Portal } from 'react-portal';
+import { AnimatePresence, Variants } from 'framer-motion';
+import { Box, BoxProps } from '../box';
+import { Backdrop } from '../backdrop';
 import { themeGet } from '../../lib/styles';
 
 type Dock = 'left' | 'right';
 
-interface ContainerProps
-  extends SpaceProps,
-    LayoutProps,
-    BackgroundProps,
-    BorderProps,
-    BackgroundColorProps,
-    AnimationProps {
+interface DrawerProps {
   dock: Dock;
-  width?: number;
-  style?: any;
-}
-
-interface DrawerProps extends ContainerProps {
   open: boolean;
+  handleClose: () => void;
+  width?: number;
   enterDuration?: number;
   exitDuration?: number;
+  backdrop?: boolean;
+  backdropColor?: string;
 }
 
-const Container = styled(motion.div)<ContainerProps>`
-  box-shadow: 4px 0px 3px rgba(0, 0, 0, 0.5);
-  background-color: ${themeGet('colors.lightCoral')};
-  border-right: 1px solid ${themeGet('colors.lightCoral')};
-  ${color}
-  ${layout}
-  ${space}
-  ${background}
-  ${border}
+type ContainerProps = Pick<DrawerProps, 'dock' | 'width'>;
+
+const Container = styled(Box)<ContainerProps>`
+  ${p => css`
+    box-shadow: ${// @ts-ignore
+    p.boxShadow || `${p.dock === 'left' ? '' : '-'}4px 0px 3px rgba(0, 0, 0, 0.5)`};
+    background-color: ${// @ts-ignore
+    p.backgroundColor || p.bg || themeGet('colors.indigo')};
+    height: ${p.height || '100vh'};
+  `}
   position: absolute;
   ${p => (p.dock === 'left' ? 'left: 0' : 'right: 0')};
-  height: 100vh;
   width: ${p => p.width}px;
 `;
 
-interface DrawerVariantProps {
-  width: number | string;
-  factor: 1 | -1;
-  enterDuration: number;
-  exitDuration: number;
-}
-
-const createDrawerVariants: (p: DrawerVariantProps) => Variants = ({
-  width,
-  factor,
-  enterDuration,
-  exitDuration,
-}: any) => ({
-  visible: {
-    x: '0vw',
+const BackdropVariants: Variants = {
+  mounted: ({ enterDuration }) => ({
+    opacity: 1,
     transition: {
       duration: enterDuration,
     },
-  },
-  invisible: {
+  }),
+  unmounted: ({ exitDuration }) => ({
+    opacity: 0,
+    transition: {
+      duration: exitDuration,
+    },
+  }),
+};
+
+const DrawerVariants: Variants = {
+  mounted: ({ enterDuration }) => ({
+    x: 0,
+    transition: {
+      duration: enterDuration,
+    },
+  }),
+  unmounted: ({ factor, width, exitDuration }) => ({
     x: factor * width,
     transition: {
       duration: exitDuration,
     },
-  },
-});
+  }),
+};
 
 const DEFAULT_DRAWER_WIDTH = 250;
-const DEFAULT_DRAWER_ENTER_DURATION = 1;
+const DEFAULT_DRAWER_ENTER_DURATION = 0.8;
 const DEFAULT_DRAWER_EXIT_DURATION = 0.5;
 
-export const Drawer: React.FC<DrawerProps> = ({
+export const Drawer: React.FC<DrawerProps & BoxProps> = ({
   dock,
   open,
   children,
   width = DEFAULT_DRAWER_WIDTH,
   exitDuration = DEFAULT_DRAWER_EXIT_DURATION,
   enterDuration = DEFAULT_DRAWER_ENTER_DURATION,
+  handleClose,
+  backdrop = true,
+  backdropColor,
   ...props
 }) => {
   const factor = dock === 'right' ? 1 : -1;
-  const variants = createDrawerVariants({ width, factor, enterDuration, exitDuration });
+  const custom = {
+    width,
+    factor,
+    enterDuration,
+    exitDuration,
+  };
 
   return (
-    <AnimatePresence>
-      {open && (
-        <Container
-          dock={dock}
-          color="black"
-          width={width}
-          initial="invisible"
-          animate="visible"
-          exit="invisible"
-          variants={variants}
-          whileTap={{ scale: 1.2 }}
-          {...props}
-        >
-          {children}
-        </Container>
-      )}
-    </AnimatePresence>
+    <Portal>
+      <AnimatePresence>
+        {open && (
+          <>
+            {backdrop && (
+              <Backdrop
+                variants={BackdropVariants}
+                animate="mounted"
+                exit="unmounted"
+                custom={{ enterDuration, exitDuration }}
+                color={backdropColor}
+                onClick={handleClose}
+              />
+            )}
+            <Container
+              dock={dock}
+              width={width}
+              initial="unmounted"
+              animate="mounted"
+              exit="unmounted"
+              variants={DrawerVariants}
+              custom={custom}
+              {...props}
+            >
+              {children}
+            </Container>
+          </>
+        )}
+      </AnimatePresence>
+    </Portal>
   );
 };
